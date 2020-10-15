@@ -1,3 +1,7 @@
+/* 	CS3305A 	Assignment 3
+	James Walsh	jwalsh57	250481718	
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -21,9 +25,6 @@ int main(){
 	x=10, y=20, z=0;
 
 	/* MOVE THE FOLLOWING LINES INTO THEIR PROPER PLACES...
-		
-		printf("Using a thread, the value of z is: %d\n", z); //value of z after passing to the thread will change
-		
     */
 
    /* Add code under every comment to demonstrate differences between child and thread */
@@ -43,13 +44,12 @@ int main(){
 	printf("Using a fork(), the value of z in the parent process is: %d\n", z); //value of z after the fork process won't change
 	
 	// create thread, wait for it to complete, then print value of z
-	
-
-
+	pthread_create(&thread, NULL, sum, NULL);
+	pthread_join(thread, NULL);
+	printf("Using a thread, the value of z is: %d\n", z); //value of z after passing to the thread will change
 
 	}
 
-	
 	if(forking_pid==0)// in child:
 	{
 	sum();// sum x and y and store it in z
